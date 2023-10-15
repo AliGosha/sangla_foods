@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "897281410413",
+    "project_id": "sangla-foods",
+    "storage_bucket": "sangla-foods.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:897281410413:android:26c8b129eef99fcf5f4664",
+        "android_client_info": {
+          "package_name": "com.example.sangla_foods"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA83W5tu0GB8DPFsmDZGApZiNqWvgfFMSk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
