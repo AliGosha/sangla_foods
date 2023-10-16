@@ -8,23 +8,23 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
-  Widget CustomButton(@required name, Color color,@required Color textColor,
-      @required double Width, @required double Height ){
-    return
-      Container(
-        height: Height,
-        width: Width,
-        child: ElevatedButton(
-          style: ElevatedButton.styleFrom(backgroundColor: color),
-          onPressed: (){},
-          child: Text(name,
-            style: TextStyle(
-              fontSize: 20,
-              color: textColor,
-
-            ),
-          ),),
-      );
+  Widget CustomButton(@required name, Color color, @required Color textColor,
+      @required double Width, @required double Height) {
+    return Container(
+      height: Height,
+      width: Width,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(backgroundColor: color),
+        onPressed: () {},
+        child: Text(
+          name,
+          style: TextStyle(
+            fontSize: 20,
+            color: textColor,
+          ),
+        ),
+      ),
+    );
   }
 
   @override
@@ -33,9 +33,12 @@ class _SignUpState extends State<SignUp> {
       backgroundColor: Colors.black,
       appBar: AppBar(
         backgroundColor: Colors.black,
-        leading: IconButton(onPressed: (){
-
-        }, icon: Icon(Icons.arrow_back_ios,color: Colors.white,)),
+        leading: IconButton(
+            onPressed: () {},
+            icon: Icon(
+              Icons.arrow_back_ios,
+              color: Colors.white,
+            )),
       ),
       body: Container(
         margin: EdgeInsets.symmetric(horizontal: 40),
@@ -43,7 +46,8 @@ class _SignUpState extends State<SignUp> {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Text("Sign Up",
+            Text(
+              "Sign Up",
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 40,
@@ -52,43 +56,67 @@ class _SignUpState extends State<SignUp> {
             ),
             Column(
               children: [
-                MyTextField(hintText: 'First Name', icon:Icons.person_outline, iconColor: Colors.white, obsecureText: false ),
+                MyTextField(
+                    hintText: 'First Name',
+                    icon: Icons.person_outline,
+                    iconColor: Colors.white,
+                    obsecureText: false),
                 SizedBox(
                   height: 10,
                 ),
-                MyTextField(hintText: 'Last Name', icon:Icons.person_outline, iconColor: Colors.white, obsecureText: false ),
+                MyTextField(
+                    hintText: 'Last Name',
+                    icon: Icons.person_outline,
+                    iconColor: Colors.white,
+                    obsecureText: false),
                 SizedBox(
                   height: 10,
                 ),
-                MyTextField(hintText: 'Email', icon:Icons.email_outlined, iconColor: Colors.white, obsecureText: false ),
+                MyTextField(
+                    hintText: 'Email',
+                    icon: Icons.email_outlined,
+                    iconColor: Colors.white,
+                    obsecureText: false),
                 SizedBox(
                   height: 10,
                 ),
-                MyTextField(hintText:"UserName", icon:Icons.person_outline, iconColor: Colors.white, obsecureText: false),
+                MyTextField(
+                    hintText: "UserName",
+                    icon: Icons.person_outline,
+                    iconColor: Colors.white,
+                    obsecureText: false),
                 SizedBox(
                   height: 10,
                 ),
-                MyTextField(hintText:"Password",icon: Icons.lock,iconColor: Colors.white, obsecureText: true),
+                MyTextField(
+                    hintText: "Password",
+                    icon: Icons.lock,
+                    iconColor: Colors.white,
+                    obsecureText: true),
                 SizedBox(
                   height: 10,
                 ),
-                MyTextField(hintText:"Confirm Password",icon: Icons.lock,iconColor: Colors.white, obsecureText: true)
+                MyTextField(
+                    hintText: "Confirm Password",
+                    icon: Icons.lock,
+                    iconColor: Colors.white,
+                    obsecureText: true)
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Center(child: CustomButton("Cancel", Colors.grey, Colors.black, 125,40)),
+                Center(
+                    child: CustomButton(
+                        "Cancel", Colors.grey, Colors.black, 125, 40)),
                 SizedBox(
                   width: 20,
                 ),
-                Center(child: CustomButton("Register", Colors.red, Colors.white, 125,40)),
+                Center(
+                    child: CustomButton(
+                        "Register", Colors.red, Colors.white, 125, 40)),
               ],
             ),
-
-
-
-
           ],
         ),
       ),
