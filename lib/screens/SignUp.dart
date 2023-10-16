@@ -1,32 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:sangla_foods/screens/Widgets/customButton.dart';
 
 import 'Widgets/my_text_field.dart';
 
-class SignUp extends StatefulWidget {
-  @override
-  State<SignUp> createState() => _SignUpState();
-}
-
-class _SignUpState extends State<SignUp> {
-  Widget CustomButton(@required name, Color color, @required Color textColor,
-      @required double Width, @required double Height) {
-    return Container(
-      height: Height,
-      width: Width,
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(backgroundColor: color),
-        onPressed: () {},
-        child: Text(
-          name,
-          style: TextStyle(
-            fontSize: 20,
-            color: textColor,
-          ),
-        ),
-      ),
-    );
-  }
-
+class SignUp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -107,14 +84,26 @@ class _SignUpState extends State<SignUp> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Center(
-                    child: CustomButton(
-                        "Cancel", Colors.grey, Colors.black, 125, 40)),
+                    child: customButton(
+                        name: "Cancel",
+                        textColor: Colors.white,
+                        color: Colors.grey,
+                        width: 150,
+                        height: 50,
+                        FontSize: 25,
+                        fontWeight: FontWeight.bold)),
                 SizedBox(
                   width: 20,
                 ),
                 Center(
-                    child: CustomButton(
-                        "Register", Colors.red, Colors.white, 125, 40)),
+                    child: customButton(
+                        name: "caccel",
+                        textColor: Colors.white,
+                        color: Colors.grey,
+                        width: 50,
+                        height: 30,
+                        FontSize: 25,
+                        fontWeight: FontWeight.bold)),
               ],
             ),
           ],
