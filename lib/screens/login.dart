@@ -38,15 +38,18 @@ class Login_Page extends StatelessWidget {
                   icon: Icons.person_outline,
                   iconColor: Colors.white,
                   obsecureText: false,
+                  controller: null,
                 ),
                 SizedBox(
                   height: 20,
                 ),
                 MyTextField(
-                    hintText: "PassWord",
-                    icon: Icons.lock,
-                    iconColor: Colors.white,
-                    obsecureText: false)
+                  hintText: "PassWord",
+                  icon: Icons.lock,
+                  iconColor: Colors.white,
+                  obsecureText: false,
+                  controller: null,
+                )
               ],
             ),
             Center(
