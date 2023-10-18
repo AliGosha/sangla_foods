@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class customButton extends StatelessWidget {
+class customButton extends StatefulWidget {
   final String name;
   final Color textColor;
   final Color color;
@@ -8,6 +8,8 @@ class customButton extends StatelessWidget {
   final double height;
   final double FontSize;
   final FontWeight fontWeight;
+  final Function? OnPressed;
+  final double clickInput;
 
   const customButton({
     super.key,
@@ -18,22 +20,35 @@ class customButton extends StatelessWidget {
     required this.height,
     required this.FontSize,
     required this.fontWeight,
+    required this.OnPressed,
+    required this.clickInput,
   });
 
   @override
+  State<customButton> createState() => _customButtonState();
+}
+
+class _customButtonState extends State<customButton> {
+  @override
   Widget build(BuildContext context) {
     return Container(
-      height: height,
-      width: width,
+      height: widget.height,
+      width: widget.width,
       child: ElevatedButton(
-        style: ElevatedButton.styleFrom(backgroundColor: color),
-        onPressed: () {},
+        style: ElevatedButton.styleFrom(backgroundColor: widget.color),
+        onPressed: () {
+          if (widget.clickInput != 0) {
+            widget.OnPressed!(widget.clickInput);
+          } else {
+            widget.OnPressed!();
+          }
+        },
         child: Text(
-          name,
+          widget.name,
           style: TextStyle(
-            fontSize: FontSize,
-            fontWeight: fontWeight,
-            color: textColor,
+            fontSize: widget.FontSize,
+            fontWeight: widget.fontWeight,
+            color: widget.textColor,
           ),
         ),
       ),

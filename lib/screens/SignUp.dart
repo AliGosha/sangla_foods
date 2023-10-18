@@ -9,10 +9,27 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
-  GlobalKey<ScaffoldState> globalKey = GlobalKey<ScaffoldState>();
+  TextEditingController firstName = TextEditingController();
+  TextEditingController lastname = TextEditingController();
+  TextEditingController email = TextEditingController();
+  TextEditingController username = TextEditingController();
+  TextEditingController password = TextEditingController();
+  // TextEditingController confirmPassword = TextEditingController();
+
+  GlobalKey<ScaffoldMessengerState> globalKey =
+      GlobalKey<ScaffoldMessengerState>();
   void validation() {
-    if(){}
+    if (firstName.text.trim().isEmpty || firstName.text.trim() == null) {
+      globalKey.currentState?.showSnackBar(
+        SnackBar(
+          content: Text(
+            "First name is Empty",
+          ),
+        ),
+      );
+    }
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,56 +62,62 @@ class _SignUpState extends State<SignUp> {
               Column(
                 children: [
                   MyTextField(
-                      hintText: 'First Name',
-                      icon: Icons.person_outline,
-                      iconColor: Colors.white,
-                      obsecureText: false,
-                      controller: null,),
+                    hintText: 'First Name',
+                    icon: Icons.person_outline,
+                    iconColor: Colors.white,
+                    obsecureText: false,
+                    controller: firstName,
+                  ),
                   SizedBox(
                     height: 10,
                   ),
                   MyTextField(
-                      hintText: 'Last Name',
-                      icon: Icons.person_outline,
-                      iconColor: Colors.white,
-                      obsecureText: false,
-                      controller: null,),
+                    hintText: 'Last Name',
+                    icon: Icons.person_outline,
+                    iconColor: Colors.white,
+                    obsecureText: false,
+                    controller: lastname,
+                  ),
                   SizedBox(
                     height: 10,
                   ),
                   MyTextField(
-                      hintText: 'Email',
-                      icon: Icons.email_outlined,
-                      iconColor: Colors.white,
-                      obsecureText: false,
-                      controller: null,),
+                    hintText: 'Email',
+                    icon: Icons.email_outlined,
+                    iconColor: Colors.white,
+                    obsecureText: false,
+                    controller: email,
+                  ),
                   SizedBox(
                     height: 10,
                   ),
                   MyTextField(
-                      hintText: "UserName",
-                      icon: Icons.person_outline,
-                      iconColor: Colors.white,
-                      obsecureText: false,
-                      controller: null,),
+                    hintText: "UserName",
+                    icon: Icons.person_outline,
+                    iconColor: Colors.white,
+                    obsecureText: false,
+                    controller: username,
+                  ),
                   SizedBox(
                     height: 10,
                   ),
                   MyTextField(
-                      hintText: "Password",
-                      icon: Icons.lock,
-                      iconColor: Colors.white,
-                      obsecureText: true,
-                      controller: null,),
+                    hintText: "Password",
+                    icon: Icons.lock,
+                    iconColor: Colors.white,
+                    obsecureText: true,
+                    controller: password,
+                  ),
                   SizedBox(
                     height: 10,
                   ),
-                  MyTextField(
-                      hintText: "Confirm Password",
-                      icon: Icons.lock,
-                      iconColor: Colors.white,
-                      obsecureText: true,
-                      controller: null,)
+                  // MyTextField(
+                  //   hintText: "Confirm Password",
+                  //   icon: Icons.lock,
+                  //   iconColor: Colors.white,
+                  //   obsecureText: true,
+                  //   controller: confirmPassword,
+                  // )
                 ],
               ),
               Row(
