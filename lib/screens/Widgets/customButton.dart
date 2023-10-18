@@ -9,9 +9,9 @@ class customButton extends StatefulWidget {
   final double FontSize;
   final FontWeight fontWeight;
   final Function? OnPressed;
-  final double clickInput;
+  late dynamic? clickInput;
 
-  const customButton({
+  customButton({
     super.key,
     required this.name,
     required this.textColor,
@@ -21,7 +21,7 @@ class customButton extends StatefulWidget {
     required this.FontSize,
     required this.fontWeight,
     required this.OnPressed,
-    required this.clickInput,
+    this.clickInput = 0,
   });
 
   @override

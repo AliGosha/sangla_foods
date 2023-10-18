@@ -61,6 +61,8 @@ class Login_Page extends StatelessWidget {
               height: 50,
               FontSize: 25,
               fontWeight: FontWeight.bold,
+              OnPressed: null,
+              clickInput: null,
             )),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
