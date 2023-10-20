@@ -27,6 +27,7 @@ class _SignUpState extends State<SignUp> {
           ),
         ),
       );
+      return;
     }
   }
 
@@ -125,25 +126,29 @@ class _SignUpState extends State<SignUp> {
                 children: [
                   Center(
                       child: customButton(
-                          name: "Cancel",
-                          textColor: Colors.white,
-                          color: Colors.grey,
-                          width: 130,
-                          height: 50,
-                          FontSize: 20,
-                          fontWeight: FontWeight.bold)),
+                    name: "Cancel",
+                    textColor: Colors.white,
+                    color: Colors.grey,
+                    width: 130,
+                    height: 50,
+                    FontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    OnPressed: null,
+                  )),
                   SizedBox(
                     width: 20,
                   ),
                   Center(
                       child: customButton(
-                          name: "Register",
-                          textColor: Colors.white,
-                          color: Colors.red,
-                          width: 130,
-                          height: 50,
-                          FontSize: 20,
-                          fontWeight: FontWeight.bold)),
+                    name: "Register",
+                    textColor: Colors.white,
+                    color: Colors.red,
+                    width: 130,
+                    height: 50,
+                    FontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    OnPressed:
+                  )),
                 ],
               ),
             ],
