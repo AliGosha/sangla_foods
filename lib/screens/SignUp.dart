@@ -19,16 +19,10 @@ class _SignUpState extends State<SignUp> {
   GlobalKey<ScaffoldMessengerState> globalKey =
       GlobalKey<ScaffoldMessengerState>();
   void validation() {
-    if (firstName.text.trim().isEmpty || firstName.text.trim() == null) {
-      globalKey.currentState?.showSnackBar(
-        SnackBar(
-          content: Text(
-            "First name is Empty",
-          ),
-        ),
-      );
-      return;
+       if (firstName.text.trim().isEmpty || firstName.text.trim() == null) {
+      globalKey.currentState?.showSnackBar(SnackBar(content: Text("First Name is Empty")))
     }
+    return;
   }
 
   @override
@@ -133,7 +127,7 @@ class _SignUpState extends State<SignUp> {
                     height: 50,
                     FontSize: 20,
                     fontWeight: FontWeight.bold,
-                    OnPressed: null,
+                    on_Pressesd: () {},
                   )),
                   SizedBox(
                     width: 20,
@@ -147,7 +141,9 @@ class _SignUpState extends State<SignUp> {
                     height: 50,
                     FontSize: 20,
                     fontWeight: FontWeight.bold,
-                    OnPressed:
+                    on_Pressesd: () {
+                      validation();
+                    },
                   )),
                 ],
               ),

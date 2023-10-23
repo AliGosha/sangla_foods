@@ -61,7 +61,7 @@ class _home_screenState extends State<home_screen> {
                   height: 55,
                   FontSize: 25,
                   fontWeight: FontWeight.bold,
-                  OnPressed: null,
+                  on_Pressesd: () {},
                 ),
                 Container(
                   height: 15,
@@ -74,7 +74,7 @@ class _home_screenState extends State<home_screen> {
                   height: 55,
                   FontSize: 25,
                   fontWeight: FontWeight.bold,
-                  OnPressed: null,
+                  on_Pressesd: () {},
                 )
               ],
             ),

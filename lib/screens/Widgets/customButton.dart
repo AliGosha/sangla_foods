@@ -8,6 +8,7 @@ class customButton extends StatefulWidget {
   final double height;
   final double FontSize;
   final FontWeight fontWeight;
+  final Function() on_Pressesd;
 
   customButton({
     super.key,
@@ -18,6 +19,7 @@ class customButton extends StatefulWidget {
     required this.height,
     required this.FontSize,
     required this.fontWeight,
+    required this.on_Pressesd,
   });
 
   @override
@@ -25,7 +27,6 @@ class customButton extends StatefulWidget {
 }
 
 class _customButtonState extends State<customButton> {
-  late Function() OnPressed;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -33,7 +34,7 @@ class _customButtonState extends State<customButton> {
       width: widget.width,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(backgroundColor: widget.color),
-        onPressed: OnPressed,
+        onPressed: widget.on_Pressesd,
         child: Text(
           widget.name,
           style: TextStyle(
