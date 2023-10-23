@@ -9,6 +9,8 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+  final globalKey = GlobalKey<FormState>();
+  bool passToggle = true;
   TextEditingController firstName = TextEditingController();
   TextEditingController lastname = TextEditingController();
   TextEditingController email = TextEditingController();
@@ -16,11 +18,13 @@ class _SignUpState extends State<SignUp> {
   TextEditingController password = TextEditingController();
   // TextEditingController confirmPassword = TextEditingController();
 
-  GlobalKey<ScaffoldMessengerState> globalKey =
-      GlobalKey<ScaffoldMessengerState>();
   void validation() {
-       if (firstName.text.trim().isEmpty || firstName.text.trim() == null) {
-      globalKey.currentState?.showSnackBar(SnackBar(content: Text("First Name is Empty")))
+    if (firstName.text.trim().isEmpty || firstName.text.trim() == null) {
+      globalKey.currentState?.showSnackBar(
+        SnackBar(
+          content: Text("First Name is Empty"),
+        ),
+      );
     }
     return;
   }
