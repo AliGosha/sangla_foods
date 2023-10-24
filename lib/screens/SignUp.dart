@@ -171,7 +171,16 @@ class _SignUpState extends State<SignUp> {
                       height: 50,
                       FontSize: 20,
                       fontWeight: FontWeight.bold,
-                      on_Pressesd: () {},
+                      on_Pressesd: () {
+                        // Validate returns true if the form is valid, or false otherwise.
+                        if (formkey.currentState!.validate()) {
+                          // If the form is valid, display a snackbar. In the real world,
+                          // you'd often call a server or save the information in a database.
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(content: Text('Processing Data')),
+                          );
+                        }
+                      },
                     )),
                   ],
                 ),
