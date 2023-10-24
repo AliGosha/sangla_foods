@@ -39,6 +39,13 @@ class Login_Page extends StatelessWidget {
                   iconColor: Colors.white,
                   obsecureText: false,
                   controller: null,
+                  validator: (value) {
+                    if (value!.isEmpty ||
+                        RegExp(r'^[a-z A-Z]+$ ').hasMatch(value!)) {
+                      return 'Please enter Last Name Correctly';
+                    } else
+                      return null;
+                  },
                 ),
                 SizedBox(
                   height: 20,
@@ -49,6 +56,13 @@ class Login_Page extends StatelessWidget {
                   iconColor: Colors.white,
                   obsecureText: false,
                   controller: null,
+                  validator: (value) {
+                    if (value!.isEmpty ||
+                        RegExp(r'^[a-z A-Z]+$ ').hasMatch(value!)) {
+                      return 'Please enter Last Name Correctly';
+                    } else
+                      return null;
+                  },
                 )
               ],
             ),

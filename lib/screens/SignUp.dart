@@ -16,14 +16,6 @@ class _SignUpState extends State<SignUp> {
   TextEditingController username = TextEditingController();
   TextEditingController password = TextEditingController();
   // TextEditingController confirmPassword = TextEditingController();
-
-  String? validation() {
-    if (firstName.text.trim().isEmpty || firstName.text.trim() == null) {
-      return
-          "Please Enter Correct Name";
-            }
-
-
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -62,6 +54,13 @@ class _SignUpState extends State<SignUp> {
                       iconColor: Colors.white,
                       obsecureText: false,
                       controller: firstName,
+                      validator: (value) {
+                        if (value!.isEmpty ||
+                            RegExp(r'^[a-z A-Z]+$ ').hasMatch(value!)) {
+                          return 'Please enter First Name Correctly';
+                        } else
+                          return null;
+                      },
                     ),
                     SizedBox(
                       height: 10,
@@ -72,6 +71,13 @@ class _SignUpState extends State<SignUp> {
                       iconColor: Colors.white,
                       obsecureText: false,
                       controller: lastname,
+                      validator: (value) {
+                        if (value!.isEmpty ||
+                            RegExp(r'^[a-z A-Z]+$ ').hasMatch(value!)) {
+                          return 'Please enter Last Name Correctly';
+                        } else
+                          return null;
+                      },
                     ),
                     SizedBox(
                       height: 10,
@@ -82,6 +88,14 @@ class _SignUpState extends State<SignUp> {
                       iconColor: Colors.white,
                       obsecureText: false,
                       controller: email,
+                      validator: (value) {
+                        if (value!.isEmpty ||
+                            RegExp(r'^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$ ')
+                                .hasMatch(value!)) {
+                          return 'Please enter Your Email Correctly';
+                        } else
+                          return null;
+                      },
                     ),
                     SizedBox(
                       height: 10,
@@ -92,6 +106,14 @@ class _SignUpState extends State<SignUp> {
                       iconColor: Colors.white,
                       obsecureText: false,
                       controller: username,
+                      validator: (value) {
+                        if (value!.isEmpty ||
+                            RegExp(r'(?=[a-zA-Z0-9._]{8,20}$)(?!.*[_.]{2})[^_.].*[^_.]$ ')
+                                .hasMatch(value!)) {
+                          return 'Please enter UserName Correctly';
+                        } else
+                          return null;
+                      },
                     ),
                     SizedBox(
                       height: 10,
@@ -102,6 +124,14 @@ class _SignUpState extends State<SignUp> {
                       iconColor: Colors.white,
                       obsecureText: true,
                       controller: password,
+                      validator: (value) {
+                        if (value!.isEmpty ||
+                            RegExp(r'(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$ ')
+                                .hasMatch(value!)) {
+                          return 'Please enter Password Correctly';
+                        } else
+                          return null;
+                      },
                     ),
                     SizedBox(
                       height: 10,
@@ -141,9 +171,7 @@ class _SignUpState extends State<SignUp> {
                       height: 50,
                       FontSize: 20,
                       fontWeight: FontWeight.bold,
-                      on_Pressesd: () {
-                        validation();
-                      },
+                      on_Pressesd: () {},
                     )),
                   ],
                 ),
