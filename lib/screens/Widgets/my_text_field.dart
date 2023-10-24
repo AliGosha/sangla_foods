@@ -6,13 +6,14 @@ class MyTextField extends StatelessWidget {
   final Color iconColor;
   final bool obsecureText;
   final TextEditingController? controller;
-  const MyTextField(
-      {super.key,
-      required this.hintText,
-      required this.icon,
-      required this.iconColor,
-      required this.obsecureText,
-      required this.controller});
+  const MyTextField({
+    super.key,
+    required this.hintText,
+    required this.icon,
+    required this.iconColor,
+    required this.obsecureText,
+    required this.controller,
+  });
 
   @override
   Widget build(BuildContext context) {
