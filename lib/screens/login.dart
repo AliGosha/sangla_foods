@@ -46,6 +46,7 @@ class Login_Page extends StatelessWidget {
                     } else
                       return null;
                   },
+                  KeyBoardType: TextInputType.name,
                 ),
                 SizedBox(
                   height: 20,
@@ -63,6 +64,7 @@ class Login_Page extends StatelessWidget {
                     } else
                       return null;
                   },
+                  KeyBoardType: TextInputType.number,
                 )
               ],
             ),

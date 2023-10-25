@@ -6,6 +6,7 @@ class MyTextField extends StatelessWidget {
   final IconData icon;
   final Color iconColor;
   final bool obsecureText;
+  final TextInputType KeyBoardType;
   final TextEditingController? controller;
   const MyTextField({
     super.key,
@@ -15,11 +16,13 @@ class MyTextField extends StatelessWidget {
     required this.obsecureText,
     required this.controller,
     required this.validator,
+    required this.KeyBoardType,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      keyboardType: KeyBoardType,
       validator: validator,
       controller: controller,
       obscureText: obsecureText,

@@ -61,80 +61,81 @@ class _SignUpState extends State<SignUp> {
                         } else
                           return null;
                       },
+                      KeyBoardType: TextInputType.name,
                     ),
                     SizedBox(
-                      height: 10,
+                      height: 5,
                     ),
                     MyTextField(
-                      hintText: 'Last Name',
-                      icon: Icons.person_outline,
-                      iconColor: Colors.white,
-                      obsecureText: false,
-                      controller: lastname,
-                      validator: (value) {
-                        if (value!.isEmpty ||
-                            RegExp(r'^[a-z A-Z]+$ ').hasMatch(value!)) {
-                          return 'Please enter Last Name Correctly';
-                        } else
-                          return null;
-                      },
-                    ),
+                        hintText: 'Last Name',
+                        icon: Icons.person_outline,
+                        iconColor: Colors.white,
+                        obsecureText: false,
+                        controller: lastname,
+                        validator: (value) {
+                          if (value!.isEmpty ||
+                              RegExp(r'^[a-z A-Z]+$ ').hasMatch(value!)) {
+                            return 'Please enter Last Name Correctly';
+                          } else
+                            return null;
+                        },
+                        KeyBoardType: TextInputType.name),
                     SizedBox(
-                      height: 10,
+                      height: 5,
                     ),
                     MyTextField(
-                      hintText: 'Email',
-                      icon: Icons.email_outlined,
-                      iconColor: Colors.white,
-                      obsecureText: false,
-                      controller: email,
-                      validator: (value) {
-                        if (value!.isEmpty ||
-                            RegExp(r'^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$ ')
-                                .hasMatch(value!)) {
-                          return 'Please enter Your Email Correctly';
-                        } else
-                          return null;
-                      },
-                    ),
+                        hintText: 'Email',
+                        icon: Icons.email_outlined,
+                        iconColor: Colors.white,
+                        obsecureText: false,
+                        controller: email,
+                        validator: (value) {
+                          if (value!.isEmpty ||
+                              RegExp(r'^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$ ')
+                                  .hasMatch(value!)) {
+                            return 'Please enter Your Email Correctly';
+                          } else
+                            return null;
+                        },
+                        KeyBoardType: TextInputType.emailAddress),
                     SizedBox(
-                      height: 10,
+                      height: 5,
                     ),
                     MyTextField(
-                      hintText: "UserName",
-                      icon: Icons.person_outline,
-                      iconColor: Colors.white,
-                      obsecureText: false,
-                      controller: username,
-                      validator: (value) {
-                        if (value!.isEmpty ||
-                            RegExp(r'(?=[a-zA-Z0-9._]{8,20}$)(?!.*[_.]{2})[^_.].*[^_.]$ ')
-                                .hasMatch(value!)) {
-                          return 'Please enter UserName Correctly';
-                        } else
-                          return null;
-                      },
-                    ),
+                        hintText: "UserName",
+                        icon: Icons.person_outline,
+                        iconColor: Colors.white,
+                        obsecureText: false,
+                        controller: username,
+                        validator: (value) {
+                          if (value!.isEmpty ||
+                              RegExp(r'(?=[a-zA-Z0-9._]{8,20}$)(?!.*[_.]{2})[^_.].*[^_.]$ ')
+                                  .hasMatch(value!)) {
+                            return 'Please enter UserName Correctly';
+                          } else
+                            return null;
+                        },
+                        KeyBoardType: TextInputType.text),
                     SizedBox(
-                      height: 10,
+                      height: 5,
                     ),
                     MyTextField(
-                      hintText: "Password",
-                      icon: Icons.lock,
-                      iconColor: Colors.white,
-                      obsecureText: true,
-                      controller: password,
-                      validator: (value) {
-                        if (value!.isEmpty ||
-                            RegExp(r'(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$ ')
-                                .hasMatch(value!)) {
-                          return 'Please enter Password Correctly';
-                        } else
-                          return null;
-                      },
-                    ),
+                        hintText: "Password",
+                        icon: Icons.lock,
+                        iconColor: Colors.white,
+                        obsecureText: true,
+                        controller: password,
+                        validator: (value) {
+                          if (value!.isEmpty ||
+                              RegExp(r'(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$ ')
+                                  .hasMatch(value!)) {
+                            return 'Please enter Password Correctly';
+                          } else
+                            return null;
+                        },
+                        KeyBoardType: TextInputType.number),
                     SizedBox(
-                      height: 10,
+                      height: 5,
                     ),
                     // MyTextField(
                     //   hintText: "Confirm Password",
@@ -160,7 +161,7 @@ class _SignUpState extends State<SignUp> {
                       on_Pressesd: () {},
                     )),
                     SizedBox(
-                      width: 20,
+                      width: 10,
                     ),
                     Center(
                         child: customButton(
