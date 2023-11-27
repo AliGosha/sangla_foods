@@ -81,14 +81,7 @@ dependencies:
   flutter_lints: ^2.0.0
   carousel_slider: ^4.2.1
   animations: ^2.0.8
-  image_picker:
-  flutter_session_manager:
-  fluttertoast:
-  scrollable_positioned_list:
-  scroll_to_index:
-  info_popup:
-  flutter_cupertino_date_picker_fork:
-  scrollview_observer:
+
 
 dev_dependencies:
   flutter_test:
