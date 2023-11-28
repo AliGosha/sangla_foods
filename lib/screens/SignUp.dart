@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:sangla_foods/screens/Widgets/customButton.dart';
 
@@ -16,6 +17,16 @@ class _SignUpState extends State<SignUp> {
   TextEditingController username = TextEditingController();
   TextEditingController password = TextEditingController();
   // TextEditingController confirmPassword = TextEditingController();
+  Future sendData() async {
+    await FirebaseFirestore.instance.collection('userData').doc().set({
+      'firstName': firstName.text,
+      'lastname': lastname.text,
+      'email': email.text,
+      'username': username.text,
+      'password': password.text,
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Form(
