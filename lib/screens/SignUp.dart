@@ -151,21 +151,21 @@ class _SignUpState extends State<SignUp> {
                     SizedBox(
                       height: 5,
                     ),
-                    MyTextField(
-                        hintText: "UserName",
-                        icon: Icons.person_outline,
-                        iconColor: Colors.white,
-                        obsecureText: false,
-                        controller: username,
-                        validator: (value) {
-                          if (value!.isEmpty ||
-                              RegExp(r'(?=[a-zA-Z0-9._]{8,20}$)(?!.*[_.]{2})[^_.].*[^_.]$ ')
-                                  .hasMatch(value!)) {
-                            return 'Please enter UserName Correctly';
-                          } else
-                            return null;
-                        },
-                        KeyBoardType: TextInputType.text),
+                    // MyTextField(
+                    //     hintText: "UserName",
+                    //     icon: Icons.person_outline,
+                    //     iconColor: Colors.white,
+                    //     obsecureText: false,
+                    //     controller: username,
+                    //     validator: (value) {
+                    //       if (value!.isEmpty ||
+                    //           RegExp(r'(?=[a-zA-Z0-9._]{8,20}$)(?!.*[_.]{2})[^_.].*[^_.]$ ')
+                    //               .hasMatch(value!)) {
+                    //         return 'Please enter UserName Correctly';
+                    //       } else
+                    //         return null;
+                    //     },
+                    //     KeyBoardType: TextInputType.text),
                     SizedBox(
                       height: 5,
                     ),
