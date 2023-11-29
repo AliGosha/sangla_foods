@@ -180,8 +180,13 @@ class _SignUpState extends State<SignUp> {
                               RegExp(r'(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$ ')
                                   .hasMatch(value!)) {
                             return 'Please enter Password Correctly';
-                          } else
-                            return null;
+                          } else {
+                            setState(() {
+                              loading = true;
+                            });
+                            sendData();
+                          }
+                          ;
                         },
                         KeyBoardType: TextInputType.number),
                     SizedBox(
