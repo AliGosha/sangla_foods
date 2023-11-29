@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sangla_foods/screens/Widgets/customButton.dart';
 
@@ -10,6 +11,8 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+  bool loading = false;
+  late UserCredential userCredential;
   final formkey = GlobalKey<FormState>();
   TextEditingController firstName = TextEditingController();
   TextEditingController lastname = TextEditingController();
@@ -18,12 +21,48 @@ class _SignUpState extends State<SignUp> {
   TextEditingController password = TextEditingController();
   // TextEditingController confirmPassword = TextEditingController();
   Future sendData() async {
-    await FirebaseFirestore.instance.collection('userData').doc().set({
-      'firstName': firstName.text,
-      'lastname': lastname.text,
-      'email': email.text,
-      'username': username.text,
-      'password': password.text,
+    try {
+      userCredential =
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: email.text,
+        password: password.text,
+      );
+      await FirebaseFirestore.instance
+          .collection('userData')
+          .doc(userCredential.user?.uid)
+          .set({
+        "firstName": firstName.text.trim(),
+        "lastName": lastname.text.trim(),
+        "email": email.text.trim(),
+        "userid": userCredential.user?.uid,
+        "password": password.text.trim(),
+      });
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text("The password provided is too weak."),
+          ),
+        );
+      } else if (e.code == 'email-already-in-use') {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text("The account already exists for that email"),
+          ),
+        );
+      }
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('$e'),
+        ),
+      );
+      setState(() {
+        loading = false;
+      });
+    }
+    setState(() {
+      loading = false;
     });
   }
 
