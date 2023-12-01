@@ -201,45 +201,53 @@ class _SignUpState extends State<SignUp> {
                     // )
                   ],
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Center(
-                        child: customButton(
-                      name: "Cancel",
-                      textColor: Colors.white,
-                      color: Colors.grey,
-                      width: 130,
-                      height: 50,
-                      FontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      on_Pressesd: () {},
-                    )),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Center(
-                        child: customButton(
-                      name: "Register",
-                      textColor: Colors.white,
-                      color: Colors.red,
-                      width: 130,
-                      height: 50,
-                      FontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      on_Pressesd: () {
-                        // Validate returns true if the form is valid, or false otherwise.
-                        if (formkey.currentState!.validate()) {
-                          // If the form is valid, display a snackbar. In the real world,
-                          // you'd often call a server or save the information in a database.
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text('Processing Data')),
-                          );
-                        }
-                      },
-                    )),
-                  ],
-                ),
+                loading
+                    ? Center(child: CircularProgressIndicator())
+                    : Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Center(
+                                  child: customButton(
+                                name: "Cancel",
+                                textColor: Colors.white,
+                                color: Colors.grey,
+                                width: 130,
+                                height: 50,
+                                FontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                on_Pressesd: () {},
+                              )),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Center(
+                                  child: customButton(
+                                name: "Register",
+                                textColor: Colors.white,
+                                color: Colors.red,
+                                width: 130,
+                                height: 50,
+                                FontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                on_Pressesd: () {
+                                  // Validate returns true if the form is valid, or false otherwise.
+                                  if (formkey.currentState!.validate()) {
+                                    // If the form is valid, display a snackbar. In the real world,
+                                    // you'd often call a server or save the information in a database.
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      const SnackBar(
+                                          content: Text('Sending Data')),
+                                    );
+                                  }
+                                },
+                              )),
+                            ],
+                          ),
+                        ],
+                      )
               ],
             ),
           ),
