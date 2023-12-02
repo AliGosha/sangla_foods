@@ -4,17 +4,19 @@ import 'package:sangla_foods/screens/Widgets/customButton.dart';
 
 import 'Widgets/my_text_field.dart';
 
-class Login_Page extends StatefulWidget {
+class loginPage extends StatefulWidget {
   @override
-  State<Login_Page> createState() => _Login_PageState();
+  State<loginPage> createState() => _loginPageState();
 }
 
-class _Login_PageState extends State<Login_Page> {
+class _loginPageState extends State<loginPage> {
   bool loading = false;
   final formkey = GlobalKey<FormState>();
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
   late UserCredential userCredential;
+  RegExp regExp = new RegExp(
+      r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$');
 
   Future loginAuth() async {
     try {
@@ -76,21 +78,32 @@ class _Login_PageState extends State<Login_Page> {
                 Column(
                   children: [
                     MyTextField(
-                      hintText: "Email",
-                      icon: Icons.email_outlined,
-                      iconColor: Colors.white,
-                      obsecureText: false,
-                      controller: email,
-                      KeyBoardType: TextInputType.emailAddress,
-                      validator: (value) {
-                        if (value!.isEmpty ||
-                            RegExp(r'^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$ ')
-                                .hasMatch(value!)) {
-                          return 'Please enter your email correctly';
-                        } else
-                          return null;
-                      },
-                    ),
+                        hintText: "Email",
+                        icon: Icons.email_outlined,
+                        iconColor: Colors.white,
+                        obsecureText: false,
+                        controller: email,
+                        KeyBoardType: TextInputType.emailAddress,
+                        validator: (value) {
+                          if (email.text.trim().isEmpty ||
+                              email.text.trim() == null) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text("Email is Empty"),
+                              ),
+                            );
+                            return;
+                          } else if (!regExp.hasMatch(email.text)) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  "Please enter vaild Email",
+                                ),
+                              ),
+                            );
+                            return;
+                          }
+                        }),
                     SizedBox(
                       height: 20,
                     ),
@@ -102,19 +115,18 @@ class _Login_PageState extends State<Login_Page> {
                       controller: password,
                       KeyBoardType: TextInputType.number,
                       validator: (value) {
-                        if (value!.isEmpty ||
-                            RegExp(r'(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$ ')
-                                .hasMatch(value!)) {
-                          return 'Please enter password correctly ';
-                        } else {
-                          setState(() {
-                            loading = true;
-                          });
+                        if (password.text.trim().isEmpty ||
+                            password.text.trim() == null) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text("Password is Empty"),
+                            ),
+                          );
+                          return;
+                        } else
                           loginAuth();
-                        }
-                        ;
                       },
-                    )
+                    ),
                   ],
                 ),
                 Center(
