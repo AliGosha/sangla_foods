@@ -178,7 +178,7 @@ class _SignUpState extends State<SignUp> {
                         validator: (value) {
                           if (value!.isEmpty ||
                               RegExp(r'(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$ ')
-                                  .hasMatch(value!)) {
+                                  .hasMatch(value)) {
                             return 'Please enter Password Correctly';
                           } else {
                             setState(() {
