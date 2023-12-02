@@ -134,20 +134,21 @@ class _SignUpState extends State<SignUp> {
                       height: 5,
                     ),
                     MyTextField(
-                        hintText: 'Email',
-                        icon: Icons.email_outlined,
-                        iconColor: Colors.white,
-                        obsecureText: false,
-                        controller: email,
-                        validator: (value) {
-                          if (value!.isEmpty ||
-                              RegExp(r'^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$ ')
-                                  .hasMatch(value!)) {
-                            return 'Please enter Your Email Correctly';
-                          } else
-                            return null;
-                        },
-                        KeyBoardType: TextInputType.emailAddress),
+                      hintText: 'Email',
+                      icon: Icons.email_outlined,
+                      iconColor: Colors.white,
+                      obsecureText: false,
+                      controller: email,
+                      KeyBoardType: TextInputType.emailAddress,
+                      validator: (value) {
+                        if (value!.isEmpty ||
+                            RegExp(r'^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$ ')
+                                .hasMatch(value!)) {
+                          return 'Please enter Your Email Correctly';
+                        } else
+                          return null;
+                      },
+                    ),
                     SizedBox(
                       height: 5,
                     ),
