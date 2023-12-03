@@ -19,13 +19,30 @@ class _loginPageState extends State<loginPage> {
 
   Future signInWithEmailAndPassword() async {
     try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: _email.text, password: _password.text);
+      await FirebaseAuth.instance
+          .signInWithEmailAndPassword(
+              email: _email.text, password: _password.text)
+          .then((value) => {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('Successfully logged-in.'),
+                  ),
+                ),
+                print(value)
+              })
+          .onError((error, stackTrace) => {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('No user found for that email.'),
+                  ),
+                ),
+              });
     } on FirebaseAuthException catch (e) {
+      print(e.code);
       if (e.code == 'user-not-found') {
         return ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
-            content: Text('No user found for that email.'),
+            content: Text('Please enter correct email/password'),
           ),
         );
       } else if (e.code == 'wrong-password') {
