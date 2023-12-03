@@ -11,44 +11,37 @@ class loginPage extends StatefulWidget {
 
 class _loginPageState extends State<loginPage> {
   bool loading = false;
-  final formkey = GlobalKey<FormState>();
-  TextEditingController email = TextEditingController();
-  TextEditingController password = TextEditingController();
-  late UserCredential userCredential;
+  final _formkey = GlobalKey<FormState>();
+  TextEditingController _email = TextEditingController();
+  TextEditingController _password = TextEditingController();
   RegExp regExp = new RegExp(
       r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$');
 
-  Future loginAuth() async {
+  Future signInWithEmailAndPassword() async {
     try {
-      userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: email.text, password: password.text);
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: _email.text, password: _password.text);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
+        return ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
             content: Text('No user found for that email.'),
           ),
         );
       } else if (e.code == 'wrong-password') {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
+        return ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
             content: Text('Wrong password provided for that user.'),
           ),
         );
-        setState(() {
-          loading = false;
-        });
       }
-      setState(() {
-        loading = false;
-      });
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: formkey,
+      key: _formkey,
       child: Scaffold(
         backgroundColor: Colors.black,
         appBar: AppBar(
@@ -82,18 +75,18 @@ class _loginPageState extends State<loginPage> {
                         icon: Icons.email_outlined,
                         iconColor: Colors.white,
                         obsecureText: false,
-                        controller: email,
+                        controller: _email,
                         KeyBoardType: TextInputType.emailAddress,
                         validator: (value) {
-                          if (email.text.trim().isEmpty ||
-                              email.text.trim() == null) {
+                          if (_email.text.trim().isEmpty ||
+                              _email.text.trim() == null) {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text("Email is Empty"),
                               ),
                             );
                             return;
-                          } else if (!regExp.hasMatch(email.text)) {
+                          } else if (!regExp.hasMatch(_email.text)) {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text(
@@ -112,19 +105,20 @@ class _loginPageState extends State<loginPage> {
                       icon: Icons.lock,
                       iconColor: Colors.white,
                       obsecureText: true,
-                      controller: password,
+                      controller: _password,
                       KeyBoardType: TextInputType.number,
                       validator: (value) {
-                        if (password.text.trim().isEmpty ||
-                            password.text.trim() == null) {
+                        if (_password.text.trim().isEmpty ||
+                            _password.text.trim() == null) {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Text("Password is Empty"),
                             ),
                           );
                           return;
-                        } else
-                          loginAuth();
+                        } else {
+                          signInWithEmailAndPassword();
+                        }
                       },
                     ),
                   ],
@@ -140,7 +134,7 @@ class _loginPageState extends State<loginPage> {
                   fontWeight: FontWeight.bold,
                   on_Pressesd: () {
                     // Validate returns true if the form is valid, or false otherwise.
-                    if (formkey.currentState!.validate()) {
+                    if (_formkey.currentState!.validate()) {
                       // If the form is valid, display a snackbar. In the real world,
                       // you'd often call a server or save the information in a database.
                       ScaffoldMessenger.of(context).showSnackBar(
