@@ -10,7 +10,6 @@ class loginPage extends StatefulWidget {
 }
 
 class _loginPageState extends State<loginPage> {
-  bool loading = false;
   final _formkey = GlobalKey<FormState>();
   TextEditingController _email = TextEditingController();
   TextEditingController _password = TextEditingController();
@@ -28,7 +27,6 @@ class _loginPageState extends State<loginPage> {
                     content: Text('Successfully logged-in.'),
                   ),
                 ),
-                print(value)
               })
           .onError((error, stackTrace) => {
                 ScaffoldMessenger.of(context).showSnackBar(
@@ -133,7 +131,8 @@ class _loginPageState extends State<loginPage> {
                             ),
                           );
                           return;
-                        } else {
+                        }
+                        {
                           signInWithEmailAndPassword();
                         }
                       },

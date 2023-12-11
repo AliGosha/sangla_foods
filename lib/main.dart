@@ -1,5 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:sangla_foods/screens/homePage.dart';
 import 'package:sangla_foods/screens/login.dart';
 
 import 'firebase_options.dart';
@@ -25,7 +27,16 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: loginPage(),
+      home: StreamBuilder(
+        stream: FirebaseAuth.instance.authStateChanges(),
+        builder: (index, snapshot) {
+          if (snapshot.hasData) {
+            return const HomePage();
+          } else
+            return loginPage();
+        },
+      ),
+      // home: loginPage(),
     );
   }
 }
